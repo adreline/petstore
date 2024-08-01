@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\PetStoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
+    if(Session::has('pets')){
+        return view('home', ['pets' => Session::get('pets')]);
+    }else{
+        return view('home', ['pets' => []]);
+    }
+    
+})->name('home');
+
+Route::post('/api/pets/query', [PetStoreController::class, 'queryPet'])->name('api.pets.query');
+Route::post('/api/pets/store', [PetStoreController::class, 'storePet'])->name('api.pets.store');
+Route::post('/api/pets/update', [PetStoreController::class, 'updatePet'])->name('api.pets.update');
+Route::post('/api/pets/delete', [PetStoreController::class, 'deletePet'])->name('api.pets.delete');
 

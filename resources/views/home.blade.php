@@ -11,7 +11,7 @@
         <form class="box cell" action="{{ route('api.pets.store') }}" method="post" enctype="multipart/form-data">
             <h1 class="title">Create Pet</h1>
             <input type="hidden" name="id" value="1">
-
+            @csrf
             <div class="field">
                 <label class="label" for="category_name">Category:</label>
                 <div class="controll">
@@ -64,10 +64,10 @@
             
             <button class="button" type="submit">Submit</button>
         </form>
-        <form class="box cell" action="{{ route('api.pets.delete', [ 'id' => 1 ]) }}" method="get">
+        <form class="box cell" action="{{ route('api.pets.delete') }}" method="post">
             <h1 class="title">Delete Pet</h1>
             <input type="hidden" name="id" value="1">
-
+            @csrf
             <div class="field">
                 <label class="label" for="pet_id">Pet id:</label>
                 <div class="controll">
@@ -76,10 +76,10 @@
             </div>
             <button class="button" type="submit">Submit</button>
         </form>
-        <form class="box cell" action="{{ route('api.pets.update', [ 'id' => 1 ]) }}" method="post" enctype="multipart/form-data">
+        <form class="box cell" action="{{ route('api.pets.update') }}" method="post" enctype="multipart/form-data">
             <h1 class="title">Edit Pet</h1>
             <input type="hidden" name="id" value="1">
-
+            @csrf
             <div class="field">
                 <label class="label" for="category_name">Category:</label>
                 <div class="controll">
@@ -132,9 +132,12 @@
             
             <button class="button" type="submit">Submit</button>
         </form>
+
+        </section>
+        <section class="container">
         <form class="box cell" action="{{ route('api.pets.query') }}" method="post">
             <h1 class="title">Browse Pets</h1>
-
+            @csrf
             <div class="field">
             <label class="label" for="status">Status:</label>
                 <div class="control">
@@ -149,6 +152,34 @@
             </div>
     
             <button class="button" type="submit">Search</button>
+            <p>Displaying {{ sizeof($pets) }} pets</p>
+
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach ($pets as $pet)
+                <tr>
+                    <th>{{ $pet->getId() }}</th>
+                    <th>{{ $pet->getName() }}</th>
+                    <th>
+                    @if(null !== $pet->getCategory())
+                        {{ $pet->getCategory()->getName() }}
+                    @endif
+                    </th>
+                </tr>
+                @endforeach
+                </tbody>
+            </table>
+            
+
+            
         </form>
         </section>
     </body>
