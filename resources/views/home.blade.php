@@ -78,8 +78,13 @@
         </form>
         <form class="box cell" action="{{ route('api.pets.update') }}" method="post" enctype="multipart/form-data">
             <h1 class="title">Edit Pet</h1>
-            <input type="hidden" name="id" value="1">
             @csrf
+            <div class="field">
+                <label class="label" for="pet_id">ID:</label>
+                <div class="controll">
+                    <input class="input" type="text" id="pet_id" name="pet_id" required>
+                </div>
+            </div>
             <div class="field">
                 <label class="label" for="category_name">Category:</label>
                 <div class="controll">
