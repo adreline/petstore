@@ -13,6 +13,7 @@ use App\PetApiLib\Api\PetApi;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use App\PetApiLib\ApiException;
 
 class PetStoreController extends Controller
 {
@@ -65,10 +66,13 @@ class PetStoreController extends Controller
 
         $pet_store_client = app(PetApi::class);
 
-        $pet_store_client->addPet($pet);
-
-        // Return a success response
-        Session::flash('message', 'Pet created successfully');
+        try{
+            $pet_store_client->addPet($pet);
+            Session::flash('message', 'Pet created successfully');
+        }catch(ApiException $e){
+            Session::flash('exception', ['code' => $e->getCode(); 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
+        }
+        
         return Redirect::route('home');
     }
     /**
@@ -92,8 +96,13 @@ class PetStoreController extends Controller
         $data = $validator->validated();
 
         $pet_store_client = app(PetApi::class);
-        $result = $pet_store_client->findPetsByStatus($data['status']);
-        Session::flash('pets', $result);
+        
+        try{
+            $result = $pet_store_client->findPetsByStatus($data['status']);
+            Session::flash('pets', $result);
+        }catch(ApiException $e){
+            Session::flash('exception', ['code' => $e->getCode(); 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
+        }
         return Redirect::route('home');
     }
 
@@ -119,10 +128,14 @@ class PetStoreController extends Controller
         $data = $validator->validated();
 
         $pet_store_client = app(PetApi::class);
-        $pet_store_client->deletePet($data['pet_id']);
 
+        try{
+            $pet_store_client->deletePet($data['pet_id']);
+            Session::flash('message', 'Pet deleted successfully');
+        }catch(ApiException $e){
+            Session::flash('exception', ['code' => $e->getCode(); 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
+        }
         // Return a success response
-        Session::flash('message', 'Pet deleted successfully');
         return Redirect::route('home');
     }
 
@@ -178,8 +191,12 @@ class PetStoreController extends Controller
 
         $pet_store_client->updatePet($pet);
 
-        // Return a success response
-        Session::flash('message', 'Pet updated successfully');
+        try{
+            $pet_store_client->updatePet($pet);
+            Session::flash('message', 'Pet updated successfully');
+        }catch(ApiException $e){
+            Session::flash('exception', ['code' => $e->getCode(); 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
+        }
         return Redirect::route('home');
     }
 
