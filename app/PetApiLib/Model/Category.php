@@ -36,7 +36,7 @@ use App\PetApiLib\ObjectSerializer;
  * Category Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  App\PetApiLib
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */

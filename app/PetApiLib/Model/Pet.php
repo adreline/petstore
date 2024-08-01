@@ -58,10 +58,10 @@ class Pet implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'int',
-        'category' => '\Swagger\Client\Model\Category',
+        'category' => 'App\PetApiLib\Model\Category',
         'name' => 'string',
         'photo_urls' => 'string[]',
-        'tags' => '\Swagger\Client\Model\Tag[]',
+        'tags' => 'App\PetApiLib\Model\Tag[]',
         'status' => 'string'
     ];
 
@@ -292,7 +292,7 @@ class Pet implements ModelInterface, ArrayAccess
     /**
      * Gets category
      *
-     * @return \Swagger\Client\Model\Category
+     * @return App\PetApiLib\Model\Category
      */
     public function getCategory()
     {
@@ -302,7 +302,7 @@ class Pet implements ModelInterface, ArrayAccess
     /**
      * Sets category
      *
-     * @param \Swagger\Client\Model\Category $category category
+     * @param App\PetApiLib\Model\Category $category category
      *
      * @return $this
      */
@@ -364,7 +364,7 @@ class Pet implements ModelInterface, ArrayAccess
     /**
      * Gets tags
      *
-     * @return \Swagger\Client\Model\Tag[]
+     * @return App\PetApiLib\Model\Tag[]
      */
     public function getTags()
     {
@@ -374,7 +374,7 @@ class Pet implements ModelInterface, ArrayAccess
     /**
      * Sets tags
      *
-     * @param \Swagger\Client\Model\Tag[] $tags tags
+     * @param App\PetApiLib\Model\Tag[] $tags tags
      *
      * @return $this
      */

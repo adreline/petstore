@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  App\PetApiLib
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -92,9 +92,9 @@ class PetApi
      *
      * Add a new pet to the store
      *
-     * @param  \Swagger\Client\Model\Pet $body Pet object that needs to be added to the store (required)
+     * @param  App\PetApiLib\Model\Pet $body Pet object that needs to be added to the store (required)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -108,9 +108,9 @@ class PetApi
      *
      * Add a new pet to the store
      *
-     * @param  \Swagger\Client\Model\Pet $body Pet object that needs to be added to the store (required)
+     * @param  App\PetApiLib\Model\Pet $body Pet object that needs to be added to the store (required)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -161,7 +161,7 @@ class PetApi
      *
      * Add a new pet to the store
      *
-     * @param  \Swagger\Client\Model\Pet $body Pet object that needs to be added to the store (required)
+     * @param  App\PetApiLib\Model\Pet $body Pet object that needs to be added to the store (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -181,7 +181,7 @@ class PetApi
      *
      * Add a new pet to the store
      *
-     * @param  \Swagger\Client\Model\Pet $body Pet object that needs to be added to the store (required)
+     * @param  App\PetApiLib\Model\Pet $body Pet object that needs to be added to the store (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -217,7 +217,7 @@ class PetApi
     /**
      * Create request for operation 'addPet'
      *
-     * @param  \Swagger\Client\Model\Pet $body Pet object that needs to be added to the store (required)
+     * @param  App\PetApiLib\Model\Pet $body Pet object that needs to be added to the store (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -326,7 +326,7 @@ class PetApi
      * @param  int $pet_id Pet id to delete (required)
      * @param  string $api_key api_key (optional)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -343,7 +343,7 @@ class PetApi
      * @param  int $pet_id Pet id to delete (required)
      * @param  string $api_key (optional)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -570,9 +570,9 @@ class PetApi
      *
      * @param  string[] $status Status values that need to be considered for filter (required)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\Pet[]
+     * @return App\PetApiLib\Model\Pet[]
      */
     public function findPetsByStatus($status)
     {
@@ -587,13 +587,13 @@ class PetApi
      *
      * @param  string[] $status Status values that need to be considered for filter (required)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\Pet[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of App\PetApiLib\Model\Pet[], HTTP status code, HTTP response headers (array of strings)
      */
     public function findPetsByStatusWithHttpInfo($status)
     {
-        $returnType = '\Swagger\Client\Model\Pet[]';
+        $returnType = 'App\PetApiLib\Model\Pet[]';
         $request = $this->findPetsByStatusRequest($status);
 
         try {
@@ -645,7 +645,7 @@ class PetApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\Pet[]',
+                        'App\PetApiLib\Model\Pet[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -687,7 +687,7 @@ class PetApi
      */
     public function findPetsByStatusAsyncWithHttpInfo($status)
     {
-        $returnType = '\Swagger\Client\Model\Pet[]';
+        $returnType = 'App\PetApiLib\Model\Pet[]';
         $request = $this->findPetsByStatusRequest($status);
 
         return $this->client
@@ -842,9 +842,9 @@ class PetApi
      *
      * @param  string[] $tags Tags to filter by (required)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\Pet[]
+     * @return App\PetApiLib\Model\Pet[]
      */
     public function findPetsByTags($tags)
     {
@@ -859,13 +859,13 @@ class PetApi
      *
      * @param  string[] $tags Tags to filter by (required)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\Pet[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of App\PetApiLib\Model\Pet[], HTTP status code, HTTP response headers (array of strings)
      */
     public function findPetsByTagsWithHttpInfo($tags)
     {
-        $returnType = '\Swagger\Client\Model\Pet[]';
+        $returnType = 'App\PetApiLib\Model\Pet[]';
         $request = $this->findPetsByTagsRequest($tags);
 
         try {
@@ -917,7 +917,7 @@ class PetApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\Pet[]',
+                        'App\PetApiLib\Model\Pet[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -959,7 +959,7 @@ class PetApi
      */
     public function findPetsByTagsAsyncWithHttpInfo($tags)
     {
-        $returnType = '\Swagger\Client\Model\Pet[]';
+        $returnType = 'App\PetApiLib\Model\Pet[]';
         $request = $this->findPetsByTagsRequest($tags);
 
         return $this->client
@@ -1114,9 +1114,9 @@ class PetApi
      *
      * @param  int $pet_id ID of pet to return (required)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\Pet
+     * @return App\PetApiLib\Model\Pet
      */
     public function getPetById($pet_id)
     {
@@ -1131,13 +1131,13 @@ class PetApi
      *
      * @param  int $pet_id ID of pet to return (required)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\Pet, HTTP status code, HTTP response headers (array of strings)
+     * @return array of App\PetApiLib\Model\Pet, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPetByIdWithHttpInfo($pet_id)
     {
-        $returnType = '\Swagger\Client\Model\Pet';
+        $returnType = 'App\PetApiLib\Model\Pet';
         $request = $this->getPetByIdRequest($pet_id);
 
         try {
@@ -1189,7 +1189,7 @@ class PetApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\Pet',
+                        'App\PetApiLib\Model\Pet',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1231,7 +1231,7 @@ class PetApi
      */
     public function getPetByIdAsyncWithHttpInfo($pet_id)
     {
-        $returnType = '\Swagger\Client\Model\Pet';
+        $returnType = 'App\PetApiLib\Model\Pet';
         $request = $this->getPetByIdRequest($pet_id);
 
         return $this->client
@@ -1386,9 +1386,9 @@ class PetApi
      *
      * Update an existing pet
      *
-     * @param  \Swagger\Client\Model\Pet $body Pet object that needs to be added to the store (required)
+     * @param  App\PetApiLib\Model\Pet $body Pet object that needs to be added to the store (required)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1402,9 +1402,9 @@ class PetApi
      *
      * Update an existing pet
      *
-     * @param  \Swagger\Client\Model\Pet $body Pet object that needs to be added to the store (required)
+     * @param  App\PetApiLib\Model\Pet $body Pet object that needs to be added to the store (required)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1455,7 +1455,7 @@ class PetApi
      *
      * Update an existing pet
      *
-     * @param  \Swagger\Client\Model\Pet $body Pet object that needs to be added to the store (required)
+     * @param  App\PetApiLib\Model\Pet $body Pet object that needs to be added to the store (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1475,7 +1475,7 @@ class PetApi
      *
      * Update an existing pet
      *
-     * @param  \Swagger\Client\Model\Pet $body Pet object that needs to be added to the store (required)
+     * @param  App\PetApiLib\Model\Pet $body Pet object that needs to be added to the store (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1511,7 +1511,7 @@ class PetApi
     /**
      * Create request for operation 'updatePet'
      *
-     * @param  \Swagger\Client\Model\Pet $body Pet object that needs to be added to the store (required)
+     * @param  App\PetApiLib\Model\Pet $body Pet object that needs to be added to the store (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1621,7 +1621,7 @@ class PetApi
      * @param  string $name Updated name of the pet (optional)
      * @param  string $status Updated status of the pet (optional)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1639,7 +1639,7 @@ class PetApi
      * @param  string $name Updated name of the pet (optional)
      * @param  string $status Updated status of the pet (optional)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1875,9 +1875,9 @@ class PetApi
      * @param  string $additional_metadata Additional data to pass to server (optional)
      * @param  \SplFileObject $file file to upload (optional)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ApiResponse
+     * @return App\PetApiLib\Model\ApiResponse
      */
     public function uploadFile($pet_id, $additional_metadata = null, $file = null)
     {
@@ -1894,13 +1894,13 @@ class PetApi
      * @param  string $additional_metadata Additional data to pass to server (optional)
      * @param  \SplFileObject $file file to upload (optional)
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \App\PetApiLib\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of App\PetApiLib\Model\ApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadFileWithHttpInfo($pet_id, $additional_metadata = null, $file = null)
     {
-        $returnType = '\Swagger\Client\Model\ApiResponse';
+        $returnType = 'App\PetApiLib\Model\ApiResponse';
         $request = $this->uploadFileRequest($pet_id, $additional_metadata, $file);
 
         try {
@@ -1952,7 +1952,7 @@ class PetApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ApiResponse',
+                        'App\PetApiLib\Model\ApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1998,7 +1998,7 @@ class PetApi
      */
     public function uploadFileAsyncWithHttpInfo($pet_id, $additional_metadata = null, $file = null)
     {
-        $returnType = '\Swagger\Client\Model\ApiResponse';
+        $returnType = 'App\PetApiLib\Model\ApiResponse';
         $request = $this->uploadFileRequest($pet_id, $additional_metadata, $file);
 
         return $this->client
