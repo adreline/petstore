@@ -33,7 +33,7 @@ class PetStoreController extends Controller
             'name' => 'required|max:255',
             'file' => 'required|file|mimes:jpg,png,jpeg,gif',
             'tags' => 'nullable',
-            'status' => 'required',
+            'status' => 'required|in:' . implode(',', PetStatusEnum::getValues()),
         ]);
 
         if ($validator->fails()) {
@@ -156,7 +156,7 @@ class PetStoreController extends Controller
             'name' => 'required|max:255',
             'file' => 'required|file|mimes:jpg,png,jpeg,gif',
             'tags' => 'nullable',
-            'status' => 'required',
+            'status' => 'required|in:' . implode(',', PetStatusEnum::getValues()),
         ]);
 
         if ($validator->fails()) {

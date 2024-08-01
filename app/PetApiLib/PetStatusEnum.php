@@ -28,4 +28,20 @@ final class PetStatusEnum extends Enum
             self::SOLD,
         ];
     }
+
+    /**
+     * Get the label for the enum value.
+     *
+     * @return string
+     */
+    public static function label(string $enum): string
+    {
+        $labels = [
+            self::AVAILABLE => 'Available',
+            self::PENDING => 'Pending',
+            self::SOLD => 'Sold',
+        ];
+
+        return $labels[$enum] ?? 'Unknown';
+    }
 }

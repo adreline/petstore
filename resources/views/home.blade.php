@@ -74,9 +74,9 @@
                 <div class="control">
                     <div class="select">
                     <select id="status" name="status">
-                        <option value="available">Available</option>
-                        <option value="pending">Pending</option>
-                        <option value="sold">Sold</option>
+                        @foreach (@App\PetApiLib\PetStatusEnum::getValues() as $status)
+                        <option value="{{ $status }}">{{ @App\PetApiLib\PetStatusEnum::label($status) }}</option>
+                        @endforeach
                     </select>
                     </div>
                 </div>
@@ -141,9 +141,9 @@
                 <div class="control">
                     <div class="select">
                     <select id="status" name="status">
-                        <option value="available">Available</option>
-                        <option value="pending">Pending</option>
-                        <option value="sold">Sold</option>
+                        @foreach (@App\PetApiLib\PetStatusEnum::getValues() as $status)
+                        <option value="{{ $status }}">{{ @App\PetApiLib\PetStatusEnum::label($status) }}</option>
+                        @endforeach
                     </select>
                     </div>
                 </div>
