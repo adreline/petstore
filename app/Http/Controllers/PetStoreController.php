@@ -68,10 +68,8 @@ class PetStoreController extends Controller
         $pet_store_client->addPet($pet);
 
         // Return a success response
-        return response()->json([
-            'message' => 'Pet created successfully',
-            'pet' => $pet,
-        ], Response::HTTP_CREATED);
+        Session::flash('message', 'Pet created successfully');
+        return Redirect::route('home');
     }
     /**
      * Query pets.
@@ -124,9 +122,8 @@ class PetStoreController extends Controller
         $pet_store_client->deletePet($data['pet_id']);
 
         // Return a success response
-        return response()->json([
-            'message' => 'Pet deleted successfully',
-        ], Response::HTTP_CREATED);
+        Session::flash('message', 'Pet deleted successfully');
+        return Redirect::route('home');
     }
 
     /**
@@ -182,9 +179,8 @@ class PetStoreController extends Controller
         $pet_store_client->updatePet($pet);
 
         // Return a success response
-        return response()->json([
-            'message' => 'Pet updated successfully',
-        ], Response::HTTP_CREATED);
+        Session::flash('message', 'Pet updated successfully');
+        return Redirect::route('home');
     }
 
 }
