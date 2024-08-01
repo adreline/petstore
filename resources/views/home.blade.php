@@ -6,6 +6,33 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
     </head>
     <body>
+        @if( null !== $message )
+        <div class="modal is-active">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+            <article class="message is-success">
+            <div class="message-body">
+                {{ $message }}
+            </div>
+            </article>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+        @endif
+        @if( null !== $exception )
+        <div class="modal is-active">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+            <article class="message is-danger">
+            <div class="message-body">
+                <h1 class="title">{{ $exception['code'] }}</h1>
+                <h2 class="subtitle">{{ $exception['message'] }}</h2>
+            </div>
+            </article>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+        @endif
         <section class="container grid">
 
         <form class="box cell" action="{{ route('api.pets.store') }}" method="post" enctype="multipart/form-data">
@@ -174,4 +201,32 @@
 
         </section>
     </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+                function closeModal($el) {
+                $el.classList.remove('is-active');
+            }
+
+            function closeAllModals() {
+                (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                closeModal($modal);
+                });
+            }
+            // Add a click event on various child elements to close the parent modal
+            (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+                const $target = $close.closest('.modal');
+
+                $close.addEventListener('click', () => {
+                closeModal($target);
+                });
+            });
+
+            // Add a keyboard event to close all modals
+            document.addEventListener('keydown', (event) => {
+                if(event.key === "Escape") {
+                closeAllModals();
+                }
+            });
+        });
+    </script>
 </html>

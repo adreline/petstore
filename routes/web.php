@@ -16,11 +16,12 @@ use App\Http\Controllers\PetStoreController;
 */
 
 Route::get('/', function () {
-    if(Session::has('pets')){
-        return view('home', ['pets' => Session::get('pets')]);
-    }else{
-        return view('home', ['pets' => []]);
-    }
+    $pets = Session::has('pets') ? Session::get('pets') : [];
+    return view('home', [
+        'pets' => $pets,
+        'message' => Session::get('message'),
+        'exception' => Session::get('exception')
+    ]);
     
 })->name('home');
 

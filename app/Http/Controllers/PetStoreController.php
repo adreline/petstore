@@ -70,7 +70,7 @@ class PetStoreController extends Controller
             $pet_store_client->addPet($pet);
             Session::flash('message', 'Pet created successfully');
         }catch(ApiException $e){
-            Session::flash('exception', ['code' => $e->getCode(); 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
+            Session::flash('exception', ['code' => $e->getCode(), 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
         }
         
         return Redirect::route('home');
@@ -101,7 +101,7 @@ class PetStoreController extends Controller
             $result = $pet_store_client->findPetsByStatus($data['status']);
             Session::flash('pets', $result);
         }catch(ApiException $e){
-            Session::flash('exception', ['code' => $e->getCode(); 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
+            Session::flash('exception', ['code' => $e->getCode(), 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
         }
         return Redirect::route('home');
     }
@@ -133,7 +133,7 @@ class PetStoreController extends Controller
             $pet_store_client->deletePet($data['pet_id']);
             Session::flash('message', 'Pet deleted successfully');
         }catch(ApiException $e){
-            Session::flash('exception', ['code' => $e->getCode(); 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
+            Session::flash('exception', ['code' => $e->getCode(), 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
         }
         // Return a success response
         return Redirect::route('home');
@@ -195,7 +195,7 @@ class PetStoreController extends Controller
             $pet_store_client->updatePet($pet);
             Session::flash('message', 'Pet updated successfully');
         }catch(ApiException $e){
-            Session::flash('exception', ['code' => $e->getCode(); 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
+            Session::flash('exception', ['code' => $e->getCode(), 'message' => $e->getMessage(), 'headers' => $e->getResponseHeaders()]);
         }
         return Redirect::route('home');
     }
