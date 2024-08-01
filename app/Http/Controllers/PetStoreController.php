@@ -10,6 +10,9 @@ use App\PetApiLib\Model\Category;
 use App\PetApiLib\Model\Tag;
 use App\PetApiLib\PetStatusEnum;
 use App\PetApiLib\Api\PetApi;
+use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class PetStoreController extends Controller
 {
@@ -92,9 +95,37 @@ class PetStoreController extends Controller
 
         $pet_store_client = app(PetApi::class);
         $result = $pet_store_client->findPetsByStatus($data['status']);
+        Session::flash('pets', $result);
+        return Redirect::route('home');
+    }
+
+    /**
+     * Delete pet.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function deletePet(Request $request)
+    {
+
+        // Validate the request data
+        $validator = Validator::make($request->all(), [
+            'pet_id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        // Retrieve the validated data
+        $data = $validator->validated();
+
+        $pet_store_client = app(PetApi::class);
+        $pet_store_client->deletePet($data['pet_id']);
+
+        // Return a success response
         return response()->json([
-            'message' => 'Query ok',
-            'pets' => $result,
+            'message' => 'Pet deleted successfully',
         ], Response::HTTP_CREATED);
     }
 }
