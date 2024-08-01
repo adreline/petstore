@@ -21,5 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/api/pets/store', [PetStoreController::class, 'storePet'])->name('api.pets.store');
 Route::post('/api/pets/update/{id}', [PetStoreController::class, 'updatePet'])->name('api.pets.update');
-Route::get('/api/pets/{status}', [PetStoreController::class, 'queryPet'])->name('api.pets.query');
+Route::post('/api/pets/query}', [PetStoreController::class, 'queryPet'])->name('api.pets.query');
 Route::delete('/api/pets/delete/{id}', [PetStoreController::class, 'deletePet'])->name('api.pets.delete');

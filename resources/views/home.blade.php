@@ -132,7 +132,7 @@
             
             <button class="button" type="submit">Submit</button>
         </form>
-        <form class="box cell" action="{{ route('api.pets.query', [ 'status' => 'available' ]) }}" method="post">
+        <form class="box cell" action="{{ route('api.pets.query') }}" method="post">
             <h1 class="title">Browse Pets</h1>
 
             <div class="field">

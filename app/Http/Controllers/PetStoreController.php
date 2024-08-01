@@ -70,5 +70,31 @@ class PetStoreController extends Controller
             'pet' => $pet,
         ], Response::HTTP_CREATED);
     }
-    
+    /**
+     * Query pets.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function queryPet(Request $request)
+    {
+        // Validate the request data
+        $validator = Validator::make($request->all(), [
+            'status' => 'required|in:' . implode(',', PetStatusEnum::getValues()),
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+        
+        // Retrieve the validated data
+        $data = $validator->validated();
+
+        $pet_store_client = app(PetApi::class);
+        $result = $pet_store_client->findPetsByStatus($data['status']);
+        return response()->json([
+            'message' => 'Query ok',
+            'pets' => $result,
+        ], Response::HTTP_CREATED);
+    }
 }
