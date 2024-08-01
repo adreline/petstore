@@ -26,7 +26,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::post('/api/pets/query', [PetStoreController::class, 'queryPet'])->name('api.pets.query');
-Route::post('/api/pets/store', [PetStoreController::class, 'storePet'])->name('api.pets.store');
-Route::post('/api/pets/update', [PetStoreController::class, 'updatePet'])->name('api.pets.update');
+Route::post('/api/pets/store', [PetStoreController::class, 'storeOrUpdatePet'])->name('api.pets.store');
+Route::post('/api/pets/update', [PetStoreController::class, 'storeOrUpdatePet'])->name('api.pets.update');
 Route::post('/api/pets/delete', [PetStoreController::class, 'deletePet'])->name('api.pets.delete');
 
