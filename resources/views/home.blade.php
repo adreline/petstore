@@ -36,15 +36,9 @@
             </div>
 
             <div class="field">
-            <label class="label" for="tags">Tags:</label>
+            <label class="label" for="tags">Tags (comma separated):</label>
                 <div class="control">
-                    <div class="select">
-                        <select multiple id="tags" name="tags[]">
-                            <option value="1">Tag 1</option>
-                            <option value="2">Tag 2</option>
-                            <option value="3">Tag 3</option>
-                        </select>
-                    </div>
+                    <input class="input" type="text" id="tags" name="tags" required>
                 </div>
             </div>
 
@@ -109,15 +103,9 @@
             </div>
 
             <div class="field">
-            <label class="label" for="tags">Tags:</label>
+            <label class="label" for="tags">Tags (comma separated):</label>
                 <div class="control">
-                    <div class="select">
-                        <select multiple id="tags" name="tags[]">
-                            <option value="1">Tag 1</option>
-                            <option value="2">Tag 2</option>
-                            <option value="3">Tag 3</option>
-                        </select>
-                    </div>
+                    <input class="input" type="text" id="tags" name="tags" required>
                 </div>
             </div>
 
@@ -140,7 +128,8 @@
 
         </section>
         <section class="container">
-        <form class="box cell" action="{{ route('api.pets.query') }}" method="post">
+            <div class="box cell">
+            <form action="{{ route('api.pets.query') }}" method="post">
             <h1 class="title">Browse Pets</h1>
             @csrf
             <div class="field">
@@ -157,35 +146,32 @@
             </div>
     
             <button class="button" type="submit">Search</button>
-            <p>Displaying {{ sizeof($pets) }} pets</p>
-
-            
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ($pets as $pet)
-                <tr>
-                    <th>{{ $pet->getId() }}</th>
-                    <th>{{ $pet->getName() }}</th>
-                    <th>
-                    @if(null !== $pet->getCategory())
-                        {{ $pet->getCategory()->getName() }}
-                    @endif
-                    </th>
-                </tr>
-                @endforeach
-                </tbody>
-            </table>
-            
-
-            
         </form>
+        <p>Displaying {{ sizeof($pets) }} pets</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach ($pets as $pet)
+            <tr>
+                <th>{{ $pet->getId() }}</th>
+                <th>{{ $pet->getName() }}</th>
+                <th>
+                @if(null !== $pet->getCategory())
+                    {{ $pet->getCategory()->getName() }}
+                @endif
+                </th>
+            </tr>
+            @endforeach
+            </tbody>
+        </table>
+            </div>
+
         </section>
     </body>
 </html>

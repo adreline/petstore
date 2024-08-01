@@ -31,7 +31,7 @@ class PetStoreController extends Controller
             'category_name' => 'required',
             'name' => 'required|max:255',
             'file' => 'required|file|mimes:jpg,png,jpeg,gif',
-            'tags' => 'nullable|array',
+            'tags' => 'nullable',
             'status' => 'required',
         ]);
 
@@ -49,8 +49,8 @@ class PetStoreController extends Controller
         $category = new Category(['id' => $data['category_id'], 'name' => $data['category_name']]);
         // Likewise, tags can't be retreived, so here are some hardcoded ones
         $tags = array_map(function ($x){
-            return new Tag(['id' => $x, 'name' => 'some name']);
-        }, $data['tags']);
+            return new Tag(['name' => $x]);
+        }, explode(',', $data['tags']));
         // Retrieve the uploaded file
         $file = $request->file('file');
         $filename = uniqid() . '_' . $file->getClientOriginalName();
@@ -145,7 +145,7 @@ class PetStoreController extends Controller
             'category_name' => 'required',
             'name' => 'required|max:255',
             'file' => 'required|file|mimes:jpg,png,jpeg,gif',
-            'tags' => 'nullable|array',
+            'tags' => 'nullable',
             'status' => 'required',
         ]);
 
@@ -163,8 +163,8 @@ class PetStoreController extends Controller
         $category = new Category(['id' => $data['category_id'], 'name' => $data['category_name']]);
         // Likewise, tags can't be retreived, so here are some hardcoded ones
         $tags = array_map(function ($x){
-            return new Tag(['id' => $x, 'name' => 'some name']);
-        }, $data['tags']);
+            return new Tag(['name' => $x]);
+        }, explode(',', $data['tags']));
         // Retrieve the uploaded file
         $file = $request->file('file');
         $filename = uniqid() . '_' . $file->getClientOriginalName();
